@@ -2,28 +2,35 @@
 
   <PropertyGroup>
     <RootNamespace>WWPRevitToolBar</RootNamespace>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows8.0</TargetFramework>
+    <RevitVersion Condition="'$(RevitVersion)'==''">2024</RevitVersion>
+    <RevitInstallPath Condition="'$(RevitInstallPath)'==''">$(ProgramFiles)\Autodesk\Revit $(RevitVersion)</RevitInstallPath>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <Configurations>Debug 2025;Release 2023;Release 2025;Debug 2023</Configurations>
+    <Configurations>Debug 2023;Debug 2024;Debug 2025;Debug 2026;Release 2023;Release 2024;Release 2025;Release 2026</Configurations>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 2023|AnyCPU'">
+  <PropertyGroup Condition="$(Configuration.Contains('2023'))">
+    <RevitVersion>2023</RevitVersion>
     <TargetFramework>net48</TargetFramework>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 2025|AnyCPU'">
+  <PropertyGroup Condition="$(Configuration.Contains('2024'))">
+    <RevitVersion>2024</RevitVersion>
+    <TargetFramework>net48</TargetFramework>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(Configuration.Contains('2025'))">
+    <RevitVersion>2025</RevitVersion>
     <TargetFramework>net8.0-windows</TargetFramework>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 2023|AnyCPU'">
-    <TargetFramework>net48</TargetFramework>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 2025|AnyCPU'">
+  <PropertyGroup Condition="$(Configuration.Contains('2026'))">
+    <RevitVersion>2026</RevitVersion>
     <TargetFramework>net8.0-windows</TargetFramework>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -34,10 +41,12 @@
 
   <ItemGroup>
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
+      <HintPath>$(RevitInstallPath)\RevitAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPIUI.dll</HintPath>
+      <HintPath>$(RevitInstallPath)\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
@@ -46,19 +55,51 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ButtonAddin.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if &quot;$(ConfigurationName)&quot; == &quot;Debug 2023&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2023&quot;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug 2025&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2025&quot;" />
+    <Exec Command="if &quot;$(ConfigurationName)&quot; == &quot;Debug 2023&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2023&quot;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug 2024&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2024&quot;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug 2025&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2025&quot;&#xD;&#xA;if &quot;$(ConfigurationName)&quot; == &quot;Debug 2026&quot; copy &quot;$(TargetDir)*&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\2026&quot;" />
+  </Target>
+
+  <Target Name="EnsureRevitAssemblies" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(RevitInstallPath)\RevitAPI.dll')" Text="RevitAPI.dll not found at $(RevitInstallPath). Install Revit $(RevitVersion) or set RevitInstallPath to the correct directory." />
+    <Error Condition="!Exists('$(RevitInstallPath)\RevitAPIUI.dll')" Text="RevitAPIUI.dll not found at $(RevitInstallPath). Install Revit $(RevitVersion) or set RevitInstallPath to the correct directory." />
   </Target>
 
   <ItemGroup>
     <Reference Update="Microsoft.CSharp">
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Update="Microsoft.VisualBasic">
       <Private>False</Private>
     </Reference>

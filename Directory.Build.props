@@ -26,8 +26,8 @@
     <!-- Constants are provided for revit versions that are not supported anymore -->
     <DefineConstants></DefineConstants>
 
-    <!-- Any unknown config is considered Debug -->
-    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <!-- Any unknown config is considered Debug 2024 so RevitVersion is set -->
+    <Configuration Condition="'$(Configuration)' == ''">Debug 2024</Configuration>
     <!-- Any unknown platform is considered AnyCPU -->
     <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
 
@@ -45,9 +45,13 @@
   <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.csproj'">
     <Configurations>
       Debug 2023;
+      Debug 2024;
       Debug 2025;
+      Debug 2026;
       Release 2023;
+      Release 2024;
       Release 2025;
+      Release 2026;
     </Configurations>
     <MSBuildProjectExtensionsPath>obj\$(Configuration)</MSBuildProjectExtensionsPath>
   </PropertyGroup>

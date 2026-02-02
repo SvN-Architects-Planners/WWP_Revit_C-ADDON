@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WWPRevitToolBar", "WWPRevitToolBar\WWPRevitToolBar.csproj", "{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}"
 EndProject
@@ -13,18 +13,31 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug 2023|Any CPU = Debug 2023|Any CPU
+		Debug 2024|Any CPU = Debug 2024|Any CPU
 		Debug 2025|Any CPU = Debug 2025|Any CPU
+		Debug 2026|Any CPU = Debug 2026|Any CPU
 		Release 2023|Any CPU = Release 2023|Any CPU
+		Release 2024|Any CPU = Release 2024|Any CPU
 		Release 2025|Any CPU = Release 2025|Any CPU
+		Release 2026|Any CPU = Release 2026|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2023|Any CPU.ActiveCfg = Debug 2023|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2023|Any CPU.ActiveCfg = Debug 2026|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2023|Any CPU.Build.0 = Debug 2026|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2024|Any CPU.ActiveCfg = Debug 2024|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2024|Any CPU.Build.0 = Debug 2024|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2025|Any CPU.ActiveCfg = Debug 2025|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2025|Any CPU.Build.0 = Debug 2025|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2026|Any CPU.ActiveCfg = Debug 2026|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Debug 2026|Any CPU.Build.0 = Debug 2026|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2023|Any CPU.ActiveCfg = Release 2023|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2023|Any CPU.Build.0 = Release 2023|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2024|Any CPU.ActiveCfg = Release 2024|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2024|Any CPU.Build.0 = Release 2024|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2025|Any CPU.ActiveCfg = Release 2025|Any CPU
 		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2025|Any CPU.Build.0 = Release 2025|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2026|Any CPU.ActiveCfg = Release 2026|Any CPU
+		{061759B8-43DC-4F09-9E34-5CA8E6FCFDEC}.Release 2026|Any CPU.Build.0 = Release 2026|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

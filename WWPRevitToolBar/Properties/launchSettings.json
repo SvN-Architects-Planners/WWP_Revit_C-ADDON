@@ -2,11 +2,27 @@
   "profiles": {
     "Revit 2025": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2025\\Revit.exe"
+      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2025\\Revit.exe",
+      "managedDebuggerType": "ManagedCore",
+      "nativeDebugging": false
+    },
+    "Revit 2026": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2026\\Revit.exe",
+      "managedDebuggerType": "ManagedCore",
+      "nativeDebugging": false
     },
     "Revit 2023": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2023\\Revit.exe"
+      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2023\\Revit.exe",
+      "managedDebuggerType": "Managed",
+      "nativeDebugging": false
+    },
+    "Revit 2024": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Autodesk\\Revit 2024\\Revit.exe",
+      "managedDebuggerType": "Managed",
+      "nativeDebugging": false
     }
   }
 }
